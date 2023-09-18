@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hit Wicket</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/hw_style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@700&display=swap');
+
+        :root {
+            --main-color: black;
+            --dif: orange;
+            --black: black;
+            --red: red;
+            --white: white;
+            --pink: #c32249;
+            --border: .2rem solid rgba(255, 255, 255, .3);
+        }
+
+        * {
+            font-family: 'Alegreya', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 7rem;
+            scroll-behavior: smooth;
+        }
+
+        html::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: #444;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--main-color);
+            border-radius: 5rem;
+        }
+
+
+        body {
+            background: #024980;
+        }
+
+        section {
+            padding: 2rem 9%;
+        }
+
+        .heading {
+            text-align: center;
+            padding-bottom: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 4rem;
+        }
+
+        .heading span {
+            color: var(--main-color);
+            text-transform: uppercase;
+        }
+
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: .8rem 3rem;
+            font-size: 1.7rem;
+            border-radius: .5rem;
+            background: #666;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--pink);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            background: #333;
+            background: orange;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 9%;
+        }
+
+        .header .logo {
+            font-weight: bolder;
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        .header .logo span {
+            color: orange;
+        }
+
+        .header .svclogo {
+            height: 5.5rem;
+            background: aliceblue;
+            border-radius: 10px;
+        }
+
+        .hr {
+            color: 5px orange;
+            background-color: #024980;
+        }
+
+        .header .kaitslogo {
+            height: 5.5rem;
+        }
+
+        .header .navbar a {
+            font-size: 1.7rem;
+            color: #fff;
+            margin-left: 2rem;
+            padding-top: 15px;
+        }
+
+        .header .navbar a:hover {
+            color: var(--main-color);
+        }
+
+        #menu-bars {
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+
+        .Home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: url(https://imagizer.imageshack.com/img924/5251/u0JbCH.png)no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .Home .content {
+            max-width: 60rem;
+        }
+
+        .Home .content h3 {
+            font-size: 7rem;
+            text-transform: uppercase;
+            color: var(--black);
+            font-weight: bold;
+        }
+
+        .Home .content h5 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: black;
+            font-weight: bold;
+        }
+
+        .Home .content p {
+            font-size: 2rem;
+            line-height: 1.8;
+            padding: 2rem 0;
+            color: rgb(255, 255, 255);
+        }
+
+        .Home .content span {
+            color: #f14a;
+        }
+
+        .about .row {
+            display: flex;
+            align-items: center;
+            background: var(--dif);
+            flex-wrap: wrap;
+            border: var(--border);
+            border-color: var(--black);
+            border-radius: 10px;
+        }
+
+        .about .row .image {
+            flex: 1 1 45rem;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .about .row .image img {
+            width: 100%;
+            object-fit: cover;
+
+        }
+
+        .about .row .content {
+            flex: 1 1 40rem;
+            padding: 2rem;
+        }
+
+        .about .row .content h3 {
+            font-size: 3rem;
+            color: var(--black);
+        }
+
+        .about .row .content p {
+            font-size: 1.6rem;
+            color: rgb(25, 22, 22);
+            padding: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .about .row .content h5 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            line-height: 2.2;
+        }
+
+        .Rules .row {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border: var(--border);
+            border-color: var(--black);
+            flex-wrap: wrap;
+        }
+
+        .Rules .row .content {
+            flex: 1 1 45rem;
+            padding: 2rem;
+        }
+
+        .Rules .row .content h3 {
+            font-size: 3rem;
+            color: var(--red);
+        }
+
+        .Rules .row .content li {
+            font-size: 1.6rem;
+            color: var(--black);
+            padding: 1rem 0;
+            line-height: 1.8;
+            margin-left: 5rem;
+        }
+
+        .ourevents .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ourevents .box-container .box {
+            border: var(--border);
+            border-color: var(--black);
+            border-radius: 10px;
+            background: var(--dif);
+        }
+
+        .ourevents .box-container .box .image {
+            height: 25rem;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .ourevents .box-container .box .image img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .ourevents .box-container .box:hover .image img {
+            transform: scale(1.2);
+        }
+
+        .ourevents .box-container .box .content {
+            padding: 2rem;
+        }
+
+        .ourevents .box-container .box .content .title {
+            font-size: 2.5rem;
+            line-height: 1.5;
+            color: var(--black);
+        }
+
+        .ourevents .box-container .box .content .title:hover {
+            color: blue;
+        }
+
+        .ourevents .box-container .box .content span {
+            color: var(--red);
+            display: block;
+            padding-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .ourevents .box-container .box .content p {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: rgb(56, 53, 53);
+            padding: 1rem 0;
+        }
+
+        .footer {
+            background: #111;
+            background: orange;
+        }
+
+        .footer .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .footer .box-container .box h3 {
+            font-size: 2.5rem;
+            padding: 1rem 0;
+            color: #fff;
+            color: black;
+        }
+
+        .footer .box-container .box a {
+            display: block;
+            font-size: 1.5rem;
+            padding: 1rem 0;
+            color: #eee;
+            color: black;
+        }
+
+        .footer .box-container .box a i {
+            padding-right: .5rem;
+            color: var(--main-color);
+        }
+
+        .footer .box-container .box a:hover i {
+            padding-right: 1.5rem;
+            color: #fff;
+        }
+
+        .footer .credit {
+            text-align: center;
+            border-top: .1rem solid #222;
+            padding: 2rem;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .footer .clg {
+            text-align: center;
+            border-top: .1rem solid #222;
+            padding: 2rem;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .footer .credit span {
+            color: white;
+        }
+
+        .footer .credit span:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* media queries  */
+
+        @media (max-width:991px) {
+
+            html {
+                font-size: 55%;
+            }
+
+            .header {
+                padding: 1.5rem 2rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+        }
+
+        @media (max-width:768px) {
+
+            #menu-bars {
+                display: initial;
+            }
+
+            .header .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                border-top: .1rem solid #222;
+                background: #333;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            }
+
+            .header .navbar.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            .fa-times {
+                transform: rotate(180deg);
+            }
+
+            .header .navbar a {
+                display: flex;
+                background: #222;
+                border-radius: .5rem;
+                padding: 1.3rem;
+                margin: 1.3rem;
+                font-size: 2rem;
+            }
+
+            .home .content h3 {
+                font-size: 4rem;
+            }
+
+        }
+
+        @media (max-width:450px) {
+
+            html {
+                font-size: 50%;
+            }
+
+            .home .home-slider .swiper-slide {
+                width: 27rem;
+            }
+
+            .contact form .inputBox input {
+                width: 100%;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <img class="svclogo" src="sv-colleges-logo-dark.png">
+        <!--<a href="#" class="logo"><span>INFOT</span>sav</a>-->
+
+        <nav class="navbar">
+            <a href="index1.html">home</a>
+            <a href="events.html">events</a>
+            <a href="posters.html">posters</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <img class="kaitslogo" src="KAITS LOGO.png">
+
+        <div id="menu-bars" class="fas fa-bars"></div>
+
+    </header>
+
+    <!-- header end -->
+
+    <!-- home Begins  -->
+
+    <section class="Home" id="Home">
+
+        <div class="content">
+            <h3><span>Hit</span> Wicket</h3>
+            <p>Hit wicket is a method of dismissal in the sport of cricket. </p>
+            <h5><span>Entry Fee :</span> ₹ 10/-</h5>
+            <h5><span>Rewards : </span>Price Money</h5>
+            <a href="contact.html" class="btn">Contact Co-ordinator</a>
+            <a href="register_form.html" class="btn">Register</a>
+        </div>
+
+    </section>
+
+    <!-- home end -->
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>ABout</span> Event </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="HitWicket.jpg" alt="Oops!Failed to load the image...">
+            </div>
+
+            <div class="content">
+                <h3>what is Hit Wicket ?</h3>
+                <p>If the striking batsman knocks the bails off the stumps or uproots the stumps, while attempting to
+                    hit the ball or take off for a run, he is out hit wicket.</p>
+                <p>This method is the sixth most common method of dismissal after caught, bowled, leg before wicket, run
+                    out and stumped.</p>
+                <h5>Event Co-ordinators: S.Wazid , Ameen</br>Date: 29/12/2022</h5>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- about section ends -->
+    <!-- Rules Begins  -->
+
+    <section class="Rules" id="Rules">
+
+        <h1 class="heading"> <span>Rules</span></h1>
+
+        <div class="row">
+            <div class="content">
+                <h3>RULES:</h3>
+                <li>Each participant will be allotted one over.</li>
+                <li>The one who hit highest number of sixes wins.</li>
+                <li>If there is tie between players extra three balls will be allotted.</li>
+                <h3>NOTE:</h3>
+                <li>Decision of jury is final.</li>
+                <li>CollegeID is mandatory.</li>
+                <h3>REWARDS:</h3>
+                <li>Winners will get Cash Prize.</li>
+                <a href="pubg&freefire.html" class="btn">Next Event</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Rules end -->
+
+    <!-- Our Events Begins  -->
+
+    <section class="ourevents" id="ourevents">
+
+        <h1 class="heading"> Our <span>Events</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="pubgvsfreefire.png" alt="Opps!Failed to load the image">
+                </div>
+                <div class="content">
+                    <a href="pubg&freefire.html" class="title">Pubg & FreeFire</a>
+                    <span>29/12/2022</span>
+                    <p>Co-ordinator: Madhu , Darshith</p>
+                    <a href="pubg&freefire.html" class="btn">read more</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="Supersixes.png" alt="Opps!Failed to load the image">
+                </div>
+                <div class="content">
+                    <a href="supersixes.html" class="title">Super Sixes</a>
+                    <span>29/12/2022</span>
+                    <p>Co-ordinator: D.Naveen , S.Charan</p>
+                    <a href="supersixes.html" class="btn">read more</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="gullycricket.jpeg" alt="Opps!Failed to load the image">
+                </div>
+                <div class="content">
+                    <a href="gullycricket.html" class="title">Gully Cricket</a>
+                    <span>29/12/2022</span>
+                    <p>Co-ordinator: Gopi , Subbu , D.Naveen , S.Charan</p>
+                    <a href="gullycricket.html" class="btn">read more</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!--Our Events End-->
+
+    <!--Footer starts-->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="index1.html"> <i class="fa fa-hand-o-right"></i> home </a>
+                <a href="posters.html"> <i class="fa fa-hand-o-right"></i> posters </a>
+                <a href="events.html"> <i class="fa fa-hand-o-right"></i> events </a>
+                <a href="contact.html"> <i class="fa fa-hand-o-right"></i> contact </a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="tel:+918008 8305 81"> <i class="fas fa-phone"></i> 8008 8305 81</a>
+                <a href="mailto:infotsavhelp.svcolleges@gmail.com"> <i class="fas fa-envelope"></i>
+                    infotsavhelp.svcollges@gmail.com </a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/profile.php?id=100089108884063"> <i class="fab fa-facebook-f"></i>
+                    facebook </a>
+                <a href="https://www.instagram.com/infotsav_svcolleges_2k22/"> <i class="fab fa-instagram"></i>
+                    instagram </a>
+                <a href="https://twitter.com/InfoTsav2k22"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="https://t.me/+Lt2rhw-PIzc1ZWI1"> <i class=" fab fa-telegram"></i> telegram </a>
+            </div>
+
+        </div>
+
+        <div class="clg">
+            <h3>sri venkateswara college of engineering - SVCE</h3>
+            <h3>sri venkateswara engineering college - SVEC</h3>
+        </div>
+
+        <div class="credit"> created by <a href="contact.html"><span> Web development team - IT &nbsp; <i
+                        class="fas fa-users"></i></span></a>
+            &nbsp; | &nbsp; all rights reserved @ SV COLLEGES</div>
+
+    </section>
+
+    <!-- footer section ends -->
+
+
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

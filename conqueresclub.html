@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conqueres Club</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- custom css file link  -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@700&display=swap');
+
+        :root {
+            --main-color: black;
+            --dif: orange;
+            --black: black;
+            --red: red;
+            --white: white;
+            --pink: #c32249;
+            --border: .2rem solid rgba(255, 255, 255, .3);
+        }
+
+        * {
+            font-family: 'Alegreya', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 7rem;
+            scroll-behavior: smooth;
+        }
+
+        html::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: #444;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--main-color);
+            border-radius: 5rem;
+        }
+
+
+        body {
+            background: #024980;
+        }
+
+        section {
+            padding: 2rem 9%;
+        }
+
+        .heading {
+            text-align: center;
+            padding-bottom: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 4rem;
+        }
+
+        .heading span {
+            color: var(--main-color);
+            text-transform: uppercase;
+        }
+
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: .8rem 3rem;
+            font-size: 1.7rem;
+            border-radius: .5rem;
+            background: #666;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--pink);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            background: #333;
+            background: orange;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 9%;
+        }
+
+        .header .logo {
+            font-weight: bolder;
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        .header .logo span {
+            color: orange;
+        }
+
+        .header .svclogo {
+            height: 5.5rem;
+            background: aliceblue;
+            border-radius: 10px;
+        }
+
+        .hr {
+            color: 5px orange;
+            background-color: #024980;
+        }
+
+        .header .kaitslogo {
+            height: 5.5rem;
+        }
+
+        .header .navbar a {
+            font-size: 1.7rem;
+            color: #fff;
+            margin-left: 2rem;
+            padding-top: 15px;
+        }
+
+        .header .navbar a:hover {
+            color: var(--main-color);
+        }
+
+        #menu-bars {
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+
+        .Home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: url("https://i.pinimg.com/736x/14/19/02/141902686cd3ea0857d4a5e4d9500c89--solid-black-wallpaper-wallpaper-iphone.jpg")no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .Home .content {
+            max-width: 60rem;
+        }
+
+        .Home .content h3 {
+            font-size: 7rem;
+            text-transform: uppercase;
+            color: white;
+            font-weight: bold;
+        }
+
+        .Home .content h5 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: white;
+            font-weight: bold;
+        }
+
+        .Home .content p {
+            font-size: 2rem;
+            line-height: 1.8;
+            padding: 2rem 0;
+            color: rgb(155, 152, 152);
+        }
+
+        .Home .content span {
+            color: #f14a;
+        }
+
+        .about .row {
+            display: flex;
+            align-items: center;
+            background: var(--dif);
+            flex-wrap: wrap;
+            border: var(--border);
+            border-color: var(--black);
+            border-radius: 10px;
+        }
+
+        .about .row .image {
+            flex: 1 1 45rem;
+            overflow: hidden;
+            width: 100%;
+
+            border-radius: 10px;
+        }
+
+        .about .row .image img {
+            width: 100%;
+            object-fit: cover;
+
+        }
+
+        .about .row .content {
+            flex: 1 1 45rem;
+            padding: 2rem;
+        }
+
+        .about .row .content h3 {
+            font-size: 3rem;
+            color: var(--black);
+        }
+
+        .about .row .content p {
+            font-size: 1.6rem;
+            color: rgb(25, 22, 22);
+            padding: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .about .row .content h5 {
+            font-size: 2rem;
+            color: white;
+            line-height: 2.2;
+        }
+
+        .Rules .row {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border: var(--border);
+            border-color: var(--black);
+            flex-wrap: wrap;
+        }
+
+        .Rules .row .content {
+            flex: 1 1 45rem;
+            padding: 2rem;
+        }
+
+        .Rules .row .content h3 {
+            font-size: 3rem;
+            color: var(--red);
+        }
+
+        .Rules .row .content li {
+            font-size: 1.6rem;
+            color: var(--black);
+            padding: 1rem 0;
+            line-height: 1.8;
+            margin-left: 5rem;
+        }
+
+        .ourevents .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ourevents .box-container .box {
+            border: var(--border);
+            border-color: var(--black);
+            border-radius: 10px;
+            background: var(--dif);
+        }
+
+        .ourevents .box-container .box .image {
+            height: 25rem;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .ourevents .box-container .box .image img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .ourevents .box-container .box:hover .image img {
+            transform: scale(1.2);
+        }
+
+        .ourevents .box-container .box .content {
+            padding: 2rem;
+        }
+
+        .ourevents .box-container .box .content .title {
+            font-size: 2.5rem;
+            line-height: 1.5;
+            color: var(--black);
+        }
+
+        .ourevents .box-container .box .content .title:hover {
+            color: var(--main-color);
+        }
+
+        .ourevents .box-container .box .content span {
+            color: var(--red);
+            display: block;
+            padding-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .ourevents .box-container .box .content p {
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: rgb(56, 53, 53);
+            padding: 1rem 0;
+        }
+
+        .footer {
+            background: #111;
+            background: orange;
+        }
+
+        .footer .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .footer .box-container .box h3 {
+            font-size: 2.5rem;
+            padding: 1rem 0;
+            color: #fff;
+            color: black;
+        }
+
+        .footer .box-container .box a {
+            display: block;
+            font-size: 1.5rem;
+            padding: 1rem 0;
+            color: #eee;
+            color: black;
+        }
+
+        .footer .box-container .box a i {
+            padding-right: .5rem;
+            color: var(--main-color);
+        }
+
+        .footer .box-container .box a:hover i {
+            padding-right: 1.5rem;
+            color: #fff;
+        }
+
+        .footer .credit {
+            text-align: center;
+            border-top: .1rem solid #222;
+            padding: 2rem;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .footer .clg {
+            text-align: center;
+            border-top: .1rem solid #222;
+            padding: 2rem;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+
+        .footer .credit span {
+            color: white;
+        }
+
+        .footer .credit span:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* media queries  */
+
+        @media (max-width:991px) {
+
+            html {
+                font-size: 55%;
+            }
+
+            .header {
+                padding: 1.5rem 2rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+        }
+
+        @media (max-width:768px) {
+
+            #menu-bars {
+                display: initial;
+            }
+
+            .header .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                border-top: .1rem solid #222;
+                background: #333;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            }
+
+            .header .navbar.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            .fa-times {
+                transform: rotate(180deg);
+            }
+
+            .header .navbar a {
+                display: flex;
+                background: #222;
+                border-radius: .5rem;
+                padding: 1.3rem;
+                margin: 1.3rem;
+                font-size: 2rem;
+            }
+
+            .home .content h3 {
+                font-size: 4rem;
+            }
+
+        }
+
+        @media (max-width:450px) {
+
+            html {
+                font-size: 50%;
+            }
+
+            .home .home-slider .swiper-slide {
+                width: 27rem;
+            }
+
+            .contact form .inputBox input {
+                width: 100%;
+            }
+
+        }
+
+        .event_det .event_det_div {
+            padding-bottom: 20px;
+
+        }
+
+        .event_det .event_det_div h2 {
+            color: black;
+        }
+
+
+        .event_det .event_det_div h3 {
+            font-size: 25px;
+            text-transform: uppercase;
+            color: chocolate;
+            padding-left: 30px;
+            padding-top: 20px;
+
+        }
+
+        .event_det .event_det_div li {
+            font-size: large;
+            padding-left: 40px;
+            padding-right: 10px;
+            line-height: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- header begins  -->
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+
+        <a href="index1.html"><img class="svclogo" src="sv-colleges-logo-dark.png"></a>
+        <!--<a href="#" class="logo"><span>INFOT</span>sav</a>-->
+
+        <nav class="navbar">
+            <a href="index1.html">home</a>
+            <a href="events.html">events</a>
+            <a href="posters.html">posters</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <img class="kaitslogo" src="KAITS LOGO.png">
+
+        <div id="menu-bars" class="fas fa-bars"></div>
+
+    </header>
+
+    <!-- header end -->
+
+    <!-- home Begins  -->
+
+    <section class="Home" id="Home">
+
+        <div class="content">
+            <h3><span>CONQUERES</span> CLUB</h3>
+            <p style="color:orange">conqueror club is created by the 3rd year it svce the club consist of the technical
+                and non techincal
+                games with only one entry students can play 10 + games the below are the games</p>
+            <h5><span>Entry Fee :</span> 50 rs <p style="font-size: 20px; color: white; display: flex;"> (can participate
+                    in all events with one entry fee) </p>
+            </h5>
+            <h5><span>Rewards : </span>Exicting Gifts and cash prizes</h5>
+            <a href="conqueresclub.html#about" class="btn">Contact Co-ordinator</a>
+            <a href="register_form.html" class="btn">Register</a>
+        </div>
+
+    </section>
+
+    <!-- home end -->
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>ABout</span> CLUB </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="cc_club1.jpeg" alt="Oops!Failed to load the image...">
+            </div>
+
+            <div class="content">
+                <h3>what is conqueres club?</h3>
+                <p>Our 3rd year students from IT dept has formed a Club called Conqueres Club
+                    In that club there are many spot games</p>
+                <p>One Entry fee and can participate in all games which are provided by the club</p>
+                <p>Winners can get Exicting Gifts and cash prizes</p>
+                <h5>Event Co-ordinators: <p style="margin-top: -15px;">K Chandhu : 9493521426</p>
+                    <p style="margin-top: -15px;">B Akshay : 7013765464</p>
+                    <p style="margin-top: -15px;">B Sravan : 7989046369</p></br>Date :29/12/2022
+                </h5>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- about section ends -->
+    <!-- Rules Begins  -->
+
+    <section class="Rules" id="Rules">
+
+        <h1 class="heading"> <span>EVENTS</span></h1>
+
+        <div class="row">
+            <div class="content">
+                <h3>TECHNICAL EVENTS</h3>
+                <li>WorkShop On Python, HTML, CSS</li>
+                <li>Program Puzzle</li>
+                <li>Crack Me</li>
+                <li>Technical Tressure</li>
+                <h3>NON TECHNICAL EVENTS</h3>
+                <li>Blast The Balloon</li>
+                <li>Guess the SongsW+</li>
+                <li>Ball into Bucket</li>
+                <li>Ball into Bucket</li>
+                <li>Pyramid Formation</li>
+                <li>Reels</li>
+                <li>Coin Matching</li>
+                <li>Brick Handling</li>
+                <li>Dart Game</li>
+                <li>Rubix cube </li>
+                <li>Save Red</li>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="event_det">
+        <div class="event_det_div" style="background-color: white;">
+            <h2 style="color: red; font-size: 30px ; text-align: center;">EVENT DETAILS</h2>
+            <h3>blast the balloon</h3>
+            <li> Two members are required for the game</li>
+            <li>A set of balloons are placed in front of the two players two players are need to stand opposite
+                direction the balloon need to placed in between two players and need to walk some distance and the
+                balloon need to blast by the players </li>
+
+            <h3>GUESS THE SONG</h3>
+            <li> Two members are required for the game</li>
+            <li>One head set is given to player1 and a song will played for player2 a dialogue will be given . A player2
+                will tell the dialogue to player1 and the dialogue need to guess by the player1</li>
+
+            <h3>PROGRAM PUZZLE</h3>
+            <li> Two members are required for the game</li>
+            <li>A code is cut into small pieces and we will given an output paper, you have to arrange the code that
+                matches the given output.</li>
+
+            <h3>CRACK ME</h3>
+            <li>Only one person is eligible to play this game</li>
+            <li>That set of answers will be given in front of the player. A question will be asked in the form of brain
+                teasers and you have to match the answer related to that question.</li>
+
+            <h3>TECHNICAL TREASSURE</h3>
+            <li>4 mem are required for the game .</li>
+            <li>It is just like a treasure haunt .but the clues are given technical terminology and players need to find
+                the treassure </li>
+
+            <h3>PYRAMID FORMATION</h3>
+            <li>a group of glasses are given to the players </li>
+            <li>a starting point and end point were given and
+                a player need to form the pyramind with given glasses at starting point and he need to place at ending
+                point
+            </li>
+
+            <h3>COIN MATCHING</h3>
+            <li>one coin is given to the player in Hand another coin is placed in the inside the bowl containing water
+                .player need to release the coin inside the water if coin falls exanctly on or 90% of another then
+                player Is winner </li>
+
+            <h3> BRICK HANDLING </h3>
+            <li>a brick placed in water player need to lift the brick with three fingers in given duration</li>
+
+            <h3>Rubix cube</h3>
+            <li>a cube is given to player player need to set colours in the given duration</li>
+
+
+        </div>
+    </section>
+
+    <!-- Rules end -->
+
+    <!-- Our Events Begins  -->
+
+    <section class="ourevents" id="ourevents">
+
+        <h1 class="heading"> Our <span>Events</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="PosterPresentation.jpg" alt="Opps!Failed to load the image">
+                </div>
+                <div class="content">
+                    <a href="posterpresentation.html" class="title">Poster Presentation</a>
+                    <span>29/12/2022</span>
+                    <p>Co-ordinator: M.Ashmitha</p>
+                    <a href="posterpresentation.html" class="btn">read more</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="JAM.png" alt="Opps!Failed to load the image">
+                </div>
+                <div class="content">
+                    <a href="jam.html" class="title">JAM</a>
+                    <span>29/12/2022</span>
+                    <p>Co-ordinator: Asha</p>
+                    <a href="jam.html" class="btn">read more</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="Blind Typing.jpg" alt="Opps!Failed to load the image">
+                </div>
+                <div class="content">
+                    <a href="blindtyping.html" class="title">Blind Typing</a>
+                    <span>29/12/2022</span>
+                    <p>Co-ordinator: Sreevastav</p>
+                    <a href="blindtyping.html" class="btn">read more</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--Footer starts-->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="index1.html"> <i class="fa fa-hand-o-right"></i> home </a>
+                <a href="posters.html"> <i class="fa fa-hand-o-right"></i> events </a>
+                <a href="contact.html"> <i class="fa fa-hand-o-right"></i> contact </a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"> <i class="fas fa-phone"></i> +91 8008830581</a>
+                <a href="#"> <i class="fas fa-envelope"></i> infotsavhelp.svcolleges@gmail.com </a>
+            </div>
+
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/profile.php?id=100089108884063"> <i class="fab fa-facebook-f"></i>
+                    facebook </a>
+                <a href="https://twitter.com/InfoTsav2k22"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="https://www.instagram.com/infotsav_svcolleges_2k22/"> <i class="fab fa-instagram"></i>
+                    instagram </a>
+                <a href="https://t.me/+Lt2rhw-PIzc1ZWI1"> <i class="fab fa-telegram"></i> telegram </a>
+            </div>
+
+        </div>
+
+        <div class="clg">
+            <h3>sri venkateswara college of engineering - SVCE</h3>
+            <h3>sri venkateswara engineering college - SVEC</h3>
+        </div>
+
+        <div class="credit"> created by <span> Web development team - IT &nbsp; <i class="fas fa-users"></i></span>
+            &nbsp; | &nbsp; all rights reserved @svcolleges </div>
+
+    </section>
+
+    <!-- footer section ends -->
+
+
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
